@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>LacRoi Options</title>   
+ 
+</head>
+
+<body class="options">
+
+    <div class="container mb-3">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Options</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Top List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="group-tab" data-toggle="tab" href="#group-list" role="tab" aria-controls="profile" aria-selected="false">Groups</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <!-- Content here -->
+                <div class="row justify-content-md-center card-container">
+                    <div class="col-md-5 ">
+                        <h2>LacROI Options </h1>                            
+                            <form action="" id="optionForm">                                                                
+                                <div class="card-info">
+                                    <div class="form-group">
+                                        <label for="minimum-roi">Minimum ROI %</label>
+                                        <input type="text" class="form-control" id="minimum_roi" name="minimum_roi" aria-describedby="minimumroiHelp" placeholder="ROI%">
+                                        <small id="minimumroiHelp" class="form-text text-muted">ROI info to be used into the search</small>
+                                    </div>
+                                    <label for="searchCat">MAX search Price</label>
+                                    <div class="row form-group">
+
+                                        <div class="col">
+                                            <label for="max_search_price_new">New</label>
+                                            <input id="max_search_price_new" name="max_search_price_new" type="text" class="form-control" placeholder="New">
+                                        </div>
+                                        <div class="col">
+                                            <label for="max_search_price_used">Used</label>
+                                            <input id="max_search_price_used" name="max_search_price_used" type="text" class="form-control" placeholder="Used">
+                                        </div>
+                                    </div>        
+                                    <div class="form-group">
+                                        <label for="searchCat">Search Category</label>
+                                        <select class="form-control" id="category" name="category">
+                                            <option value="" selected>All Categories</option>
+                                        </select>
+
+                                        <div class="breadcrumb_category">
+
+                                        </div>
+                                        <div class="cleanSelect d-none">
+                                            <i class="fas fa-broom"></i> 
+                                            <span> Clean</span>
+                                        </div>
+                                    </div>
+
+                                    <label for="searchCat">Sales Rank Search</label>
+                                    <div class="row form-group">
+
+                                        <div class="col">
+                                            <label for="sales_rank_min">Min</label>
+                                            <input name="sales_rank_min" id="sales_rank_min" type="text" class="form-control" placeholder="Min">
+                                        </div>
+                                        <div class="col">
+                                            <label for="sales_rank_max">Max</label>
+                                            <input name="sales_rank_max" id="sales_rank_max" type="text" class="form-control" placeholder="Max">
+                                        </div>
+                                    </div>
+                                    <label for="searchCat">Min Sellers</label>
+                                    <div class="row form-group">
+
+                                        <div class="col">
+                                            <label for="min_sellers_new">New</label>
+                                            <input id="min_sellers_new" name="min_sellers_new" type="text" class="form-control" placeholder="New">
+                                        </div>
+                                        <div class="col">
+                                            <label for="min_sellers_used">Used</label>
+                                            <input id="min_sellers_used" name="min_sellers_used" type="text" class="form-control" placeholder="Used">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ><br>
+                                        <button id="saveOptions" class="btn btn-info btn-block">Save</button>
+                                    </div>
+                                    <span id="msj-error"></span>
+                                </div>                                    
+                            </form>
+                    </div>    
+                </div>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row justify-content-md-center card-container" >  
+                    <div class="col-md-12 card-info">
+                        <h4>My Top List</h4>   
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="col-md-4">
+                                    <label for="">Select Group</label>
+                                    <select class="form-control" name="" id="groups_topList">
+                                        <option value="0">-- Select Group --</option>                                
+                                    </select>
+                                </div>    
+                            </div>
+                            <div class="col-md-3" style="text-align:right;">
+                                <button id="loadGroups_modal" type="button" class="btn btn-primary col-md-7 col-md-8" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="fas fa-upload"></i> Upload CSV file
+                                </button>
+                                <a target="_blank"  href="http://app.lacroi.io/csv/SampleUploadFile.csv" id=""  class="btn btn-info mt-2 col-md-8">
+                                    <i class="far fa-file"></i> Sample File
+                                </a>
+                                <br><br>
+                            </div>                           
+                        </div>
+
+                        <div class="loader_topList d-none">
+                            <div class="overlay">
+                                <div class="ball a"></div>
+                                <div class="ball b"></div>
+                                <div class="ball c"></div>
+                            </div>    
+                        </div>
+
+                        
+                      
+                        <table class="table table-striped table-hover table-sm d-none" id="toplist">
+                            <thead>
+                                <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Asin</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Brand</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Price Amazon</th>
+                                <th scope="col">Price New</th>
+                                <th scope="col">Price Used</th>
+                                <th scope="col">Rank</th>
+                                <th scope="col">Group Name</th>
+                                <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyid">
+
+                            </tbody>
+
+                            <tfoot >
+                                <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Asin</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Brand</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Price Amazon</th>
+                                <th scope="col">Price New</th>
+                                <th scope="col">Price Used</th>
+                                <th scope="col">Rank</th>
+                                <th scope="col">Group Name</th>
+                                <th scope="col"></th>
+                                </tr>
+                            </tfoot>
+                        </table>   
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="group-list" role="tabpanel" aria-labelledby="black-tab">
+                <div class="card-info">
+                    <div class="header-groups">
+                        <h4>Groups</h4>
+                        <button id="create_group" class="btn btn-primary" data-toggle="modal" data-target="#modalGroup">Create Group</button>                      
+                    </div>
+
+                    <div class="loader_groups">
+                        <div class="overlay">
+                            <div class="ball a"></div>
+                            <div class="ball b"></div>
+                            <div class="ball c"></div>
+                        </div>    
+                    </div>
+
+                    <div class="coontainer_groups">
+                        <div>
+                 
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>             
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">            
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Upload File</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success" role="alert" id="filemsg_result" style="display: none;">
+                        File Uploaded Successfully
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">File</label>
+                        <input type="file" class="form-control-file" name="csv_file" id="csv_file">
+                    </div>
+                    <div class="">
+                        <label for="">Select Group</label>
+                        <select class="form-control" name="" id="groups_topList_modal">
+                            <option value="0">-- Select Group --</option>                                    
+                        </select>
+                    </div>                                        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="uploadfile">Upload File</button>
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit TopList Item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="msj_toplist" class="alert alert-success" role="alert"></div>   
+                    <form action="" id="modal_edit_info">
+                        <div class="mb-2 form-group">
+                            <label for="edit_manufacturated">Group Name:</label>
+                            <select class="form-control" name="" id="groups_edit_Info">
+                                                           
+                            </select>                                   
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="edit_manufacturated">Name:</label>
+                                <input id="edit_name" name="" type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col">
+                                <label for="edit_brand">Brand:</label>
+                                <input id="edit_brand" name="edit_brand" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="edit_model">Model:</label>
+                                <input id="edit_model" name="" type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col">
+                                <label for="edit_rank">Rank:</label>
+                                <input id="edit_rank" name="edit_brand" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="">New Price:</label>
+                                <input id="edit_new_price" name="" type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col">
+                                <label for="used">Used Price:</label>
+                                <input id="edit_used_price" name="edit_brand" type="text" class="form-control" placeholder="">
+                            </div>                         
+                        </div>
+
+                        <div class="row form-group">                            
+                            <div class="col">
+                                <label for="amazon">Amazon Price:</label>
+                                <input id="edit_amazon_price" name="edit_brand" type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col">
+                                <label for="">Upc:</label>
+                                <input id="edit_upc" name="" type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col">
+                                <label for="">ISBN</label>
+                                <input id="edit_isbn" name="" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" id="save_info" class="btn btn-info btn-block" data-asin="">Save</button>
+                        </div>
+                    </form>                             
+                </div>            
+            </div>
+        </div>
+    </div>
+
+
+     <!-- Modal Groups-->
+     <div class="modal fade" id="modalGroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">            
+                <div class="modal-header">
+                    <h5 class="modal-title" id="title_modal_group"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success d-none" role="alert" id="msg_result_group">
+
+                    </div>
+                    <form  id="frm-groups" action="">
+                        <div class="form-group row">
+                            <div class="rows col-md-4">
+                                <label for="name">Group name</label>
+                                <input type="text" id="name_group" class="form-control">
+                            </div>
+    
+                            <div class="rows col-md-4">
+                                <label for="">Description</label>
+                                <input type="text" id="dscrp_group" class="form-control" value="">
+                            </div>
+    
+                            <div class="rows col-md-4">
+                                <label for="">Status</label>
+                                <select class="form-control" name="" id="status_group">                                               
+                                    <option value="0">Inactive</option>
+                                    <option value="1">Active</option>                               
+                                </select>
+                            </div> 
+                        </div>         
+                    </form>                               
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary hide-msg" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary saveInfo" id="">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/proper.js"></script>
+    <script src="js/bootstrap.min.js"></script>    
+    <script src="js/dataTables.min.js"></script>
+    <script src="js/options.js"></script>   
+   
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Jobs</title>   
+ 
+</head>
+
+<body class="jobs_Page">
+    
+    <div class="loader_main">
+        <div class="overlay">
+            <div class="ball a"></div>
+            <div class="ball b"></div>
+            <div class="ball c"></div>
+        </div>
+    </div>
+
+    <div class="container_jobs container d-none">
+        <div class="card-info">
+            <table class="table table-striped table-hover table-sm" id="jobProds">
+                <thead>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Asin</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">Price New</th>
+                        <th scope="col">Price Used</th>                    
+                        <th scope="col">Products with roi</th>
+                        <th scope="col">Group Name</th>                    
+                    </tr>
+                </thead>
+                <tbody id="tbodyid">
+
+                </tbody>
+
+                <tfoot >
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Asin</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">Price New</th>
+                        <th scope="col">Price Used</th>                    
+                        <th scope="col">Products with roi</th>
+                        <th scope="col">Group Name</th>
+                    </tr>
+                </tfoot>
+            </table>  
+        </div>
+    </div>
+
+
+    <div class="container demo">		             
+        <!-- Modal -->
+        <div class="modal right fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+    
+                    <div class="modal-header">
+                        <h5>Ebay Products</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                        
+                    </div>
+
+                    <div class="loader_container">
+                        <div class="overlay">
+                            <div class="ball a"></div>
+                            <div class="ball b"></div>
+                            <div class="ball c"></div>
+                        </div>
+                    </div>
+    
+                    <div id="get_prods_job" class="modal-body">
+
+                    </div>
+    
+                </div><!-- modal-content -->
+            </div><!-- modal-dialog -->
+        </div><!-- modal -->                
+    </div><!-- container -->
+
+
+  
+       
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/proper.js"></script>
+    <script src="js/bootstrap.min.js"></script>    
+    <script src="js/dataTables.min.js"></script>
+    <script src="js/jobs.js"></script>   
+</body>
+</html>
+
+

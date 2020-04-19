@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/gtag.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    
+    <title>LacRoi</title>
+</head>
+<body> 
+
+    <div id="product_info" class="container">
+        <div id="frm-login">
+            <img src="img/lac2.png" alt="">
+            <form action="">
+                <h2>Sign In</h2>
+                <div id="result" class="alert alert-danger" role="alert"></div>
+                <input class="form-control" type="email" value="" name="email" id="email" placeholder="Email">
+                <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+                <button id="sign-in" type="submit">Login</button>
+                <div>
+                    <a href="reset.html">Forgot Password</a>
+                    <a href="login.html" class="registerlink">Create Account</a>
+                </div>
+            </form>
+        </div>
+        <div id="lacRoi_ext">
+            <div class="controls-right">
+                <div class="coupon_controlls d-none">
+                    <span id="aply-cupon" data-toggle="modal" data-target=".modalCupon">Apply Coupon</span>
+                    <span>|</span>     
+                </div>
+                <div class="container_dots_main">
+                    <div class="more">
+                        <button id="more-btn" class="more-btn">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                        <div class="more-menu">
+                            <div class="more-menu-caret">
+                                <div class="more-menu-caret-outer"></div>
+                                <div class="more-menu-caret-inner"></div>
+                            </div>
+                            <ul class="more-menu-items" tabindex="-1" role="menu" aria-labelledby="more-btn" aria-hidden="true">
+                                <li class="more-menu-item" role="presentation">
+                                    <span id="go-to-options"><i class="fas fa-cog"></i> Settings
+                                    </span>
+                                </li>
+                                <li class="more-menu-item" role="presentation">
+                                    <span id="logOut" title="Log Out"><i class="fas fa-sign-out-alt"></i> Log Out</span>                
+                                </li>                                                                                       
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>           
+            <span id="type-Account"></span>
+            <span id="days-free" class="active_notes"  data-toggle="modal" data-target=".modaltrial"></span>
+
+            <img src="img/lac2.png" alt="">
+            <span class="version">v0.59</span>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">SEARCH</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="results-tab" data-toggle="tab" href="#results" role="tab" aria-controls="results" aria-selected="false">RESULTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="newTabSsearch" data-toggle="tab" href="#newTab" role="tab" aria-controls="newTab" aria-selected="false">TOP LIST</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="jobs" data-toggle="tab" href="#jobs_tab" role="tab" aria-controls="jobs" aria-selected="false">JOBS</a>
+                </li>
+            </ul>            
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="search-all">
+                        <div class="input-group col-8">
+                            <input id="value-random" type="number" class="form-control form-control-sm" placeholder="Min Price">
+                            <div class="input-group-append">
+                              <button  id="random-search" type="button" class="btn-secondary form-control-sm"><i class="fas fa-random"></i>Random</button>                              
+                            </div>
+                          </div>                  
+                    </div>
+                    <div class="form">
+                        <div class="tab-content">
+                            <div class="accordion" id="accordionExample">
+                                <div class="">
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div id="errorSearch" class="alert alert-danger" role="alert"></div>
+                                            <div class="radios">
+                                                <label class="title-label" for="">Search For:</label>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="new">
+                                                    <label class="form-check-label"  for="inlineRadio1">New</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="used">
+                                                    <label class="form-check-label" for="inlineRadio2">Used</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="both">
+                                                    <label class="form-check-label" for="inlineRadio3">Both</label>
+                                                </div>
+                                            </div>
+                                            <div id="querySearch">
+                                                <form action="" id="searchData">
+                                                    <div class="card-info">
+                                                        <div class="">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-body">
+                                                                    <fieldset class="col-md-6">
+                                                                        <label data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="title-label" for="">General</label>
+                                                                        <div class="panel panel-default">
+                                                                            <div class="panel-body">
+                                                                                <div class="row form-group">                                                                                    
+                                                                                    <div class="col">
+                                                                                        <label for="max_search_price_used">Title</label>
+                                                                                        <input id="search_title" name="search_title" type="text" class="form-control hide-msj" placeholder="">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row form-group">                                                                                   
+                                                                                    <div class="col">
+                                                                                        <label for="search_brand">Brand</label>
+                                                                                        <input id="search_brand" name="search_brand" type="text" class="form-control hide-msj" placeholder="">
+                                                                                    </div>
+                                                                                    <div class="col">
+                                                                                        <label for="max_search_price_new">Model</label>
+                                                                                        <input id="search_model" name="search_model" type="text" class="form-control hide-msj" placeholder="">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row form-group row">
+                                                                                    <div class="col">
+                                                                                        <label for="minimum_roi">Roi</label>
+                                                                                        <input type="text" class="form-control" id="minimum_roi" name="minimum_roi" aria-describedby="minimumroiHelp" placeholder="">
+                                                                                    </div>
+                                                                                    <div class="col">
+                                                                                        <label for="search_manufacturated">Manufactured</label>
+                                                                                        <input id="search_manufacturated" name="search_manufacturated" type="text" class="form-control" placeholder="">
+                                                                                    </div>
+                                                                                </div>                                                                                   
+                                                                                <div class="row form-group row">                                                                        
+                                                                                    <div class="col col-12">
+                                                                                        <label for="searchCat">Search Category</label>
+                                                                                        <input type="hidden" id="valueCategories" value="">
+                                                                                        <input type="hidden" id="rootCategories" value="">
+                                                                                        <select class="form-control" id="category" name="category">
+                                                                                            <!-- <option value="" selected>All Categories</option> -->
+                                                                                        </select>
+                                                                                        <div class="breadcrumb_category">
+
+                                                                                        </div>
+                                                                                        <div class="cleanSelect d-none">
+                                                                                            <i class="fas fa-broom"></i>
+                                                                                            <span>Clean</span>
+                                                                                        </div>
+                                                                                    </div>                                                                                                                                                             
+                                                                                </div>                                                                          
+                                                                            </div>
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-body">
+                                                                    <fieldset class="col-md-6">
+                                                                        <div class="panel panel-default">
+                                                                            <div class="panel-body">
+                                                                                <label class="title-label" for="">New Prices</label>
+                                                                                <div class="row form-group">
+                                                                                    <div class="col">
+                                                                                        <label for="min_search_price_new">Min</label>
+                                                                                        <input id="min_search_price_new" name="min_search_price_new" type="text" class="form-control" placeholder="" value="0">
+                                                                                    </div>
+                                                                                    <div class="col">
+                                                                                        <label for="max_search_price_new">Max</label>
+                                                                                        <input id="max_search_price_new" name="max_search_price_new" type="text" class="form-control" placeholder="">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <label class="title-label" for="">Used Prices</label>
+                                                                                <div class="row form-group">
+                                                                                    <div class="col">
+                                                                                        <label for="min_search_price_used">Min</label>
+                                                                                        <input id="min_search_price_used" name="min_search_price_used" type="text" class="form-control" placeholder="" value="0">
+                                                                                    </div>
+                                                                                    <div class="col">
+                                                                                        <label for="max_search_price_used">Max</label>
+                                                                                        <input id="max_search_price_used" name="max_search_price_used" type="text" class="form-control" placeholder="">
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-body">
+
+                                                                    <fieldset class="col-md-6">
+                                                                        <div class="panel panel-default">
+                                                                            <div class="panel-body">
+                                                                                <label class="title-label" for="">Sales Rank</label>
+                                                                                <div class="row form-group">
+                                                                                    <div class="col">
+                                                                                        <label for="sales_rank_max">Min </label>
+                                                                                        <input name="sales_rank_min" id="sales_rank_min" type="text" class="form-control" placeholder="">
+                                                                                    </div>
+                                                                                    <div class="col">
+                                                                                        <label for="sales_rank_max">Max </label>
+                                                                                        <input name="sales_rank_max" id="sales_rank_max" type="text" class="form-control" placeholder="">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <label class="title-label" for="">Minimum Sellers</label>
+                                                                                <div class="row form-group">
+                                                                                    <div class="col">
+                                                                                        <label for="min_sellers_new">New</label>
+                                                                                        <input id="min_sellers_new" name="min_sellers_new" type="text" class="form-control" placeholder="">
+                                                                                    </div>
+                                                                                    <div class="col">
+                                                                                        <label for="min_sellers_used">Used</label>
+                                                                                        <input id="min_sellers_used" name="min_sellers_used" type="text" class="form-control" placeholder="">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" id="searchOptions" class="btn btn-info btn-block">Search</button>
+                                                        </div>
+                                                    </div>
+                                                    <input value="0" type="hidden" name="page" id="page">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- tab-content -->
+                    </div>
+                    <!-- /form -->
+                </div>
+                <div class="tab-pane fade" id="results" role="tabpanel" aria-labelledby="profile-tab">
+                    <div id="tab__results">                 
+                        <div class="dots_results">
+                            <div class="container_dots">
+                                <div class="more">
+                                    <button id="more-btn" class="more-btn">
+                                        <span class="more-dot"></span>
+                                        <span class="more-dot"></span>
+                                        <span class="more-dot"></span>
+                                    </button>
+                                    <div class="more-menu">
+                                        <div class="more-menu-caret">
+                                            <div class="more-menu-caret-outer"></div>
+                                            <div class="more-menu-caret-inner"></div>
+                                        </div>
+                                        <ul class="more-menu-items" tabindex="-1" role="menu" aria-labelledby="more-btn" aria-hidden="true">
+                                            <li class="more-menu-item" role="presentation" data-toggle="modal" data-target=".modaljob_result">
+                                                <span><i class="fas fa-file-alt"></i> Get bestdeals</span>
+                                            </li>
+                                            <li id="cleanresults" class="more-menu-item" role="presentation">
+                                                <span><i class="far fa-window-restore"></i> Clean Results</span>                                                
+                                            </li> 
+                                            
+                                            <li id="checkificansellall" class="more-menu-item" role="presentation">
+                                                <span><i class="far fa-window-restore"></i> Check if I can sell</span>                                                
+                                            </li> 
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <a href="#" id="next" data-page="1">next</a> -->
+                        <table class="table table-sm" id="searchTable" style="font-size:10px; text-align:left;">
+                            <thead class="">
+                                <tr>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Info</th>
+                                    <th scope="col">Asin</th>
+                                    <th scope="col"></th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="searchTableBody">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <button class="page-link" href="#" aria-label="Previous" id="previuspage">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </button>
+                            </li>
+
+                            <li class="page-item">
+                                <button class="page-link" href="#" aria-label="Next" id="nextpage">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </button>
+                            </li>
+                        </ul>
+                        <span id="loading"></span>
+                    </nav>
+                    <div id="viewProduct1">
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="newTab" role="tabpanel" aria-labelledby="profile-tab"> 
+                    <div class="menu_topList">
+                        <div class="container_dots">
+                            <div class="more">
+                                <button id="more-btn" class="more-btn">
+                                    <span class="more-dot"></span>
+                                    <span class="more-dot"></span>
+                                    <span class="more-dot"></span>
+                                </button>
+                                <div class="more-menu">
+                                    <div class="more-menu-caret">
+                                        <div class="more-menu-caret-outer"></div>
+                                        <div class="more-menu-caret-inner"></div>
+                                    </div>
+                                    <ul class="more-menu-items" tabindex="-1" role="menu" aria-labelledby="more-btn" aria-hidden="true">
+                                        <li class="more-menu-item" role="presentation" data-toggle="modal" data-target=".modaljob">
+                                            <span ><i class="fas fa-file-alt"></i> Get all bestdeals</span>
+                                        </li>
+                                        <li class="more-menu-item" role="presentation" data-toggle="modal" data-target=".modalrefresh">
+                                            <span><i class="fas fa-sync-alt"></i> Refresh toplist</span>
+                                        </li>                                                                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                     
+                    <form class="form-inline add-asin">
+                        <input type="text" class="form-control" id="asinval" value="" placeholder="Asin">
+                        <button type="button" id="saveaddasin" class="btn btn-primary">Add Asin</button>
+
+                        <select class="form-control mt-3" name="" id="groups_topList">
+                            <option value="0">-- Select Group --</option>                             
+                        </select>
+                    </form>
+                    <div id="insertInfoSearch">
+
+
+                        <div class="loader_topList_ext d-none">
+                            <div class="overlay">
+                                <div class="ball a"></div>
+                                <div class="ball b"></div>
+                                <div class="ball c"></div>
+                            </div>    
+                        </div>
+
+                        <table class="table table-striped table-hover table-sm d-none" id="toplistExt">
+                            <thead class="">
+                                <tr>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Asin</th>
+                                </tr>
+                              
+                            </thead>
+
+                           
+
+                            <tbody id="toplistExtTbody">
+
+                            </tbody>
+
+                            <div id="viewProduct">
+                            </div>
+                        </table>
+                    </div>
+                </div> 
+
+                <div id="jobs_tab" class="tab-pane fade accordion__list" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="overlay">
+                        <div class="ball a"></div>
+                        <div class="ball b"></div>
+                        <div class="ball c"></div>
+                    </div>
+
+                    <div class="__item d-none">
+                        <h2 id="title_refresh" class="accordion-button">Toplist Refresh Job</h2>
+                        <div class="refresh_info inner">
+    
+                        </div>
+                    </div>
+
+                    <div class="__item d-none">
+                        <h2 id="title_jobs" class="accordion-button">Products Ebay Jobs</h2>
+                        <div class="jobs_info inner">
+                            
+                        </div>
+                    </div>
+
+                    <div class="__item d-none">
+                        <h2 id="title_jobs_search" class="accordion-button">Search Jobs</h2>
+                        <div class="jobs_info_search inner">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+          <!-- Modal refresh confirm-->
+        <div class="modal fade modalrefresh" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">      
+                    <div class="modal-body"> 
+                        <div  id="msj-refresh" class="alert alert-success" role="alert"></div>                         
+                        <h2 class="title_job">¿Do you want to refresh toplist?</h2>
+                        <div class="cupon-container-btn">
+                            <button type="button" class="btn btn-primary" id="new_refesh" data-asin="">Refresh</button>                        
+                            <button class="btn btn-primary hide-msj-refresh" id="to_cancel" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!--Modal refresh end-->
+
+        <!-- Modal jobs confirm-->
+        <div class="modal fade modaljob" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">      
+                    <div class="modal-body"> 
+                        <div  id="msj-job" class="alert alert-success" role="alert"></div>                         
+                        <h2 class="title_job">¿Do you want to create a new job?</h2>
+                        <div class="cupon-container-btn">
+                            <button type="button" class="btn btn-primary" id="new_Job" data-asin="">Create Job</button>                        
+                            <button class="btn btn-primary hide-msj-job" id="to_cancel" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!--Modal jobs end-->
+
+         <!-- Modal jobs_result confirm-->
+         <div class="modal fade modaljob_result" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">      
+                    <div class="modal-body"> 
+                        <div  id="msj-job_result" class="alert" role="alert"></div>                         
+                        <h2 class="title_job">¿Do you want to create a new job?</h2>
+                        <div class="cupon-container-btn">
+                            <button type="button" class="btn btn-primary" id="new_Job_result" data-asin="">Create Job</button>                        
+                            <button class="btn btn-primary hide-msj-job" id="to_cancel_result" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!--Modal jobs_result end-->
+
+        <!-- Modal cupon-->    
+        <div class="modal fade modalCupon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"> 
+                        <span>Apply coupon</span>                       
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"> 
+                        <div  id="" class="alert alert-danger resultNote" role="alert"></div>                         
+                        <input type="text" id="cupon">
+                        <div class="cupon-container-btn">
+                            <button type="button" class="btn btn-primary" id="save_cupon" data-asin="">Apply Coupon</button>
+                            <button class="btn btn-primary" id="to_cancel" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!--Modal cupon end-->
+    
+        <!-- Modal days for free-->
+        <div class="modal fade modaltrial" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"> 
+                        <span>Your Premium Trial Expired</span>                       
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">                                                              
+                        <p>The trial period of the plan has expired. Please get a premium plan to continue enjoying
+                            of all the LacRoi functionalities.</p>                         
+                    </div>
+                    <div class="buttons-expired">
+                        <button class="btn btn-primary" id="to_premium">Become Premium</button>
+                        <button class="btn btn-primary" id="to_cancel" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+     <!--Modal days for free end-->
+
+        <!-- Modal Notes-->
+        <div class="modal fade modalNotes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"> 
+                        <span>Notes</span>                       
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"> 
+                        <div  id="" class="alert alert-danger resultNote" role="alert"></div>                         
+                        <textarea id="note" name="text" placeholder=""></textarea>
+                        <button type="button" class="btn btn-primary "  id="save_note_update" data-asin="">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div> <!--Modal Notes end-->
+
+        <!-- Modal Info-->
+        <div class="modal fade modalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"> 
+                        <span>Edit Info</span>                       
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"> 
+                        <div  id="" class="alert alert-danger alert-success resultNote" role="alert"></div>                         
+                        <form id="modal_edit_info" action="">
+                            <div class="row form-group">
+                                <div class="col-12 mb-2">
+                                    <label for="edit_manufacturated">Group Name:</label>
+                                    <select class="form-control" name="" id="groups_edit_Info">
+                                                                   
+                                    </select>                                   
+                                </div>
+                                <div class="col">
+                                    <label for="edit_manufacturated">Name:</label>
+                                    <input id="edit_name" name="" type="text" class="form-control" placeholder="">
+                                </div>
+                                <div class="col">
+                                    <label for="edit_brand">Brand:</label>
+                                    <input id="edit_brand" name="edit_brand" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col">
+                                    <label for="edit_model">Model:</label>
+                                    <input id="edit_model" name="" type="text" class="form-control" placeholder="">
+                                </div>
+                                <div class="col">
+                                    <label for="edit_rank">Rank:</label>
+                                    <input id="edit_rank" name="edit_brand" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col">
+                                    <label for="">New Price:</label>
+                                    <input id="edit_new_price" name="" type="text" class="form-control" placeholder="">
+                                </div>
+                                <div class="col">
+                                    <label for="used">Used Price:</label>
+                                    <input id="edit_used_price" name="edit_brand" type="text" class="form-control" placeholder="">
+                                </div>                         
+                            </div>
+
+                            <div class="row form-group">                            
+                                <div class="col">
+                                    <label for="amazon">Amazon Price:</label>
+                                    <input id="edit_amazon_price" name="edit_brand" type="text" class="form-control" placeholder="">
+                                </div>
+                                <div class="col">
+                                    <label for="">Upc:</label>
+                                    <input id="edit_upc" name="" type="text" class="form-control" placeholder="">
+                                </div>
+                                <div class="col">
+                                    <label for="">ISBN</label>
+                                    <input id="edit_isbn" name="" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" id="save_info" class="btn btn-info btn-block" data-asin="">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> <!--Modal Info end-->
+
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/proper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/dataTables.min.js"></script> 
+    
+   
+    <!-- <script src="js/options.js"></script> -->
+</body>
+</html>
