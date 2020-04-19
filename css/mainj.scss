@@ -1,0 +1,35 @@
+a{
+    text-decoration: underline;
+    color:#000;
+}
+.container{
+    width: 350px;
+    height:500px;
+    text-align: center;
+    .logo{
+        margin-top:15px;
+        max-width: 100px;
+    }
+    form{
+        text-align: left;
+        .col-form-label{
+            line-height: 0.5;
+        }
+    }
+}
+.reset__passw{
+    .container{
+        height: initial;
+        padding: 15px;
+    }
+}
+
+button{
+   background-color: #2cb6b0!important;
+   border-color: #2cb6b0!important;
+   &:hover{
+    background-color: #2cb6b0!important;
+    border-color: #2cb6b0!important;
+    opacity: 0.8;
+   }
+}
